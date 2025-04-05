@@ -1,0 +1,23 @@
+import java.util.Stack;
+
+public class stack {
+    public static void main(String[] args) {
+        String str = "((a+b)*(c-d))";
+        char[] chars = str.toCharArray();
+        System.out.println(check(chars));
+    }
+    static boolean check (char[] chars){
+            Stack<Character> stack = new Stack<>();
+            for (char c : chars) {
+                if (c == '(') {
+                    stack.push(c);
+                } else if (c == ')') {
+                    if (stack.isEmpty()) {
+                        return false;
+                    }
+                    stack.pop();
+                }
+            }
+            return stack.isEmpty();
+        }
+    }
